@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Clone void-packages 
       run: |
-        git clone --depth=1 https://gitlab.com/Dark-Matter7232/FUCK-Void.git
+        git clone --depth=1 https://gitlab.com/Dark-Matter7232/LOVE-Void.git
         git clone --depth=1 https://github.com/void-linux/void-packages.git 
         git clone https://github.com/siduck76/VUR.git -b master --depth=1 
         git clone --depth=1 https://github.com/not-void/nvoid.git 
@@ -113,19 +113,19 @@ jobs:
         source ~/.profile
         export XBPS_DISTDIR=void-packages
         export PATH=~/xbps-git/usr/bin:$PATH
-        xbps-rindex --privkey FUCK-Void/privkey.pem --sign --signedby 'anurag' void-packages/hostdir/binpkgs
-        xbps-rindex --sign-pkg --privkey FUCK-Void/privkey.pem void-packages/hostdir/binpkgs/*.xbps
-        rm -rf FUCK-Void/generic
-        mv void-packages/hostdir/binpkgs FUCK-Void/generic
+        xbps-rindex --privkey LOVE-Void/privkey.pem --sign --signedby 'anurag' void-packages/hostdir/binpkgs
+        xbps-rindex --sign-pkg --privkey LOVE-Void/privkey.pem void-packages/hostdir/binpkgs/*.xbps
+        rm -rf LOVE-Void/generic
+        mv void-packages/hostdir/binpkgs LOVE-Void/generic
         rm -rf void-packages xbps-static-latest.x86_64-musl.tar.xz void* void-chroot start-void.sh VUR signpackages nvoid
         git config --global user.email "dark-matter7232@users.noreply.github.com"
         git config --global user.name "Dark-Matter7232"
-        cd FUCK-Void
+        cd LOVE-Void
         git add -A
         git commit -m "Update Repo" -a
     - name: Push packages to gitlab
       env:
         token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
       run: |
-        cd FUCK-Void
-        git push https://gitlab-ci-token:${token}@gitlab.com/Dark-Matter7232/FUCK-Void.git main
+        cd LOVE-Void
+        git push https://gitlab-ci-token:${token}@gitlab.com/Dark-Matter7232/LOVE-Void.git main
